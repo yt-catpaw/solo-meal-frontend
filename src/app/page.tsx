@@ -2,14 +2,20 @@
 import { useState } from "react";
 import MoodButton from "@/components/MoodButton";
 
+const moodToShops: Record<string, string[]> = {
+  和食: ["やよい軒", "大戸屋", "吉野家"],
+  洋食: ["ココス", "サイゼリヤ", "ジョナサン"],
+  カフェ: ["スターバックス", "ドトール", "タリーズ"],
+  中華: ["バーミヤン", "餃子の王将", "日高屋"],
+};
+
 export default function HomePage() {
   const [selectedMood, setSelectedMood] = useState<string | null>(null);
+  const moods = Object.keys(moodToShops);
 
   const handleClick = (mood: string) => {
     setSelectedMood(mood);
   };
-
-  const moods = ["和食", "洋食", "カフェ", "中華"];
 
   return (
     <main className="text-center p-10 min-h-screen text-white">
@@ -26,6 +32,19 @@ export default function HomePage() {
           />
         ))}
       </div>
+
+      {selectedMood && (
+        <div className="mt-10">
+          <h2 className="text-xl mb-4">{selectedMood}におすすめの店舗</h2>
+          <ul className="space-y-2">
+            {moodToShops[selectedMood].map((shop) => (
+              <li key={shop} className="bg-white text-black py-2 rounded">
+                {shop}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </main>
   );
 }
