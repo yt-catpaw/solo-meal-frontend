@@ -19,7 +19,7 @@ export default function HomePage() {
       <h1 className="text-2xl mb-5">SoloMealへようこそ！</h1>
       <p className="text-lg mb-8">気分を選んでください</p>
 
-      <div className="mt-5">
+      <div className="mt-5 flex flex-col md:flex-row justify-center items-center">
         {moods.map((label) => (
           <MoodButton
             key={label}
@@ -37,7 +37,7 @@ export default function HomePage() {
             <button
               key={shop}
               type="button"
-              className="block mx-auto my-2 w-60 px-4 py-2 bg-white text-black rounded shadow"
+              className="block mx-auto my-2 w-48 md:w-60 px-4 py-2 text-base md:text-lg bg-white text-black rounded shadow"
               onClick={() => setSelectedShop(shop)}
             >
               {shop}
@@ -47,7 +47,7 @@ export default function HomePage() {
       )}
 
       {selectedShop && (
-        <div className="mt-10 p-5 bg-gray-100 text-black rounded shadow">
+        <div className="mt-10 p-4 md:p-8 bg-gray-100 text-black rounded shadow">
           <h3 className="text-xl mb-2">{selectedShop}の詳細ページ（仮）</h3>
           <p>ここに店舗の詳しい情報が表示されます。</p>
         </div>
