@@ -6,6 +6,8 @@ import type { Mood } from "@/types";
 
 export default function HomePage() {
   const [selectedMood, setSelectedMood] = useState<Mood | null>(null);
+  const [selectedShop, setSelectedShop] = useState<string | null>(null);
+
   const moods: Mood[] = Object.keys(moodToShops) as Mood[];
 
   const handleClick = (mood: Mood) => {
@@ -31,13 +33,22 @@ export default function HomePage() {
       {selectedMood && (
         <div className="mt-10">
           <h2 className="text-xl mb-4">{selectedMood}におすすめの店舗</h2>
-          <ul className="space-y-2">
-            {moodToShops[selectedMood].map((shop) => (
-              <li key={shop} className="bg-white text-black py-2 rounded">
-                {shop}
-              </li>
-            ))}
-          </ul>
+          {moodToShops[selectedMood].map((shop) => (
+            <button
+              key={shop}
+              className="block mx-auto my-2 bg-white text-black py-2 px-4 rounded"
+              onClick={() => setSelectedShop(shop)}
+            >
+              {shop}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {selectedShop && (
+        <div className="mt-8">
+          <h3 className="text-xl mb-2">{selectedShop}の詳細ページ（仮）</h3>
+          <p>ここに店舗の詳しい情報が表示されます。</p>
         </div>
       )}
     </main>
