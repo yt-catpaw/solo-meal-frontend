@@ -36,7 +36,8 @@ export default function HomePage() {
           {moodToShops[selectedMood].map((shop) => (
             <button
               key={shop}
-              className="block mx-auto my-2 bg-white text-black py-2 px-4 rounded"
+              type="button"
+              className="block mx-auto my-2 w-60 px-4 py-2 bg-white text-black rounded shadow"
               onClick={() => setSelectedShop(shop)}
             >
               {shop}
@@ -46,7 +47,7 @@ export default function HomePage() {
       )}
 
       {selectedShop && (
-        <div className="mt-8">
+        <div className="mt-10 p-5 bg-gray-100 text-black rounded shadow">
           <h3 className="text-xl mb-2">{selectedShop}の詳細ページ（仮）</h3>
           <p>ここに店舗の詳しい情報が表示されます。</p>
         </div>
