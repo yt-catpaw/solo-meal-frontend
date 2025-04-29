@@ -1,19 +1,14 @@
 "use client";
 import { useState } from "react";
 import MoodButton from "@/components/MoodButton";
-
-const moodToShops: Record<string, string[]> = {
-  和食: ["やよい軒", "大戸屋", "吉野家"],
-  洋食: ["ココス", "サイゼリヤ", "ジョナサン"],
-  カフェ: ["スターバックス", "ドトール", "タリーズ"],
-  中華: ["バーミヤン", "餃子の王将", "日高屋"],
-};
+import { moodToShops } from "@/data/moodToShops";
+import type { Mood } from "@/types";
 
 export default function HomePage() {
-  const [selectedMood, setSelectedMood] = useState<string | null>(null);
-  const moods = Object.keys(moodToShops);
+  const [selectedMood, setSelectedMood] = useState<Mood | null>(null);
+  const moods: Mood[] = Object.keys(moodToShops) as Mood[];
 
-  const handleClick = (mood: string) => {
+  const handleClick = (mood: Mood) => {
     setSelectedMood(mood);
   };
 
