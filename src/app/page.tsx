@@ -1,10 +1,15 @@
 "use client";
+import { useState } from "react";
 import MoodButton from "@/components/MoodButton";
 
 export default function HomePage() {
+  const [selectedMood, setSelectedMood] = useState<string | null>(null);
+
   const handleClick = (mood: string) => {
-    console.log(`選ばれた気分: ${mood}`);
+    setSelectedMood(mood);
   };
+
+  const moods = ["和食", "洋食", "カフェ", "中華"];
 
   return (
     <main className="text-center p-10 min-h-screen text-white">
@@ -12,11 +17,12 @@ export default function HomePage() {
       <p className="text-lg mb-8">気分を選んでください</p>
 
       <div className="mt-5">
-        {["和食", "洋食", "カフェ", "中華"].map((label) => (
+        {moods.map((label) => (
           <MoodButton
             key={label}
             label={label}
             onClick={() => handleClick(label)}
+            isSelected={selectedMood === label}
           />
         ))}
       </div>
