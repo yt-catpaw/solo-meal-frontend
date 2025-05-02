@@ -40,9 +40,15 @@ export default function HomePage() {
             <Link
               key={shop.name}
               href={`/shop/${encodeURIComponent(shop.name)}`}
-              className="block mx-auto my-2 w-48 md:w-60 px-4 py-2 text-base md:text-lg bg-white text-black rounded shadow text-center"
+              className="block w-full max-w-md bg-white rounded-lg shadow-md p-5 my-6 mx-auto hover:shadow-lg transition"
             >
-              {shop.name}
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-lg font-bold">
+                  {shop.emoji} {shop.name}
+                </h3>
+                <span className="text-sm text-gray-500">{shop.mood}</span>
+              </div>
+              <p className="text-sm text-gray-700">{shop.comment}</p>
             </Link>
           ))}
         </div>
