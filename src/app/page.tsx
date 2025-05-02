@@ -1,14 +1,17 @@
 "use client";
 import { useState } from "react";
 import MoodButton from "@/components/MoodButton";
-import { moodToShops } from "@/data/moodToShops";
+import { shopDetails } from "@/data/shopDetails";
 import type { Mood } from "@/types";
+import { moods } from "@/types";
+import Link from "next/link";
 
 export default function HomePage() {
   const [selectedMood, setSelectedMood] = useState<Mood | null>(null);
-  const [selectedShop, setSelectedShop] = useState<string | null>(null);
 
-  const moods: Mood[] = Object.keys(moodToShops) as Mood[];
+  const filteredShops = selectedMood
+    ? shopDetails.filter((shop) => shop.mood === selectedMood)
+    : [];
 
   const handleClick = (mood: Mood) => {
     setSelectedMood(mood);
@@ -33,23 +36,15 @@ export default function HomePage() {
       {selectedMood && (
         <div className="mt-10">
           <h2 className="text-xl mb-4">{selectedMood}におすすめの店舗</h2>
-          {moodToShops[selectedMood].map((shop) => (
-            <button
-              key={shop}
-              type="button"
-              className="block mx-auto my-2 w-48 md:w-60 px-4 py-2 text-base md:text-lg bg-white text-black rounded shadow"
-              onClick={() => setSelectedShop(shop)}
+          {filteredShops.map((shop) => (
+            <Link
+              key={shop.name}
+              href={`/shop/${encodeURIComponent(shop.name)}`}
+              className="block mx-auto my-2 w-48 md:w-60 px-4 py-2 text-base md:text-lg bg-white text-black rounded shadow text-center"
             >
-              {shop}
-            </button>
+              {shop.name}
+            </Link>
           ))}
-        </div>
-      )}
-
-      {selectedShop && (
-        <div className="mt-10 p-4 md:p-8 bg-gray-100 text-black rounded shadow">
-          <h3 className="text-xl mb-2">{selectedShop}の詳細ページ（仮）</h3>
-          <p>ここに店舗の詳しい情報が表示されます。</p>
         </div>
       )}
     </main>
