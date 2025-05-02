@@ -18,7 +18,7 @@ export default function HomePage() {
   };
 
   return (
-    <main className="text-center p-10 min-h-screen text-white">
+    <div className="p-6 max-w-md mx-auto">
       <h1 className="text-2xl mb-5">SoloMealへようこそ！</h1>
       <p className="text-lg mb-8">気分を選んでください</p>
 
@@ -47,6 +47,6 @@ export default function HomePage() {
           ))}
         </div>
       )}
-    </main>
+    </div>
   );
 }

@@ -16,7 +16,7 @@ export default function ShopDetailPage({ params }: Props) {
   if (!shop) return notFound();
 
   return (
-    <main className="p-6 max-w-md mx-auto text-center">
+    <div className="p-6 max-w-md mx-auto">
       <h1 className="text-2xl font-bold mb-4">
         {shop.emoji} {shop.name}
       </h1>
@@ -41,6 +41,6 @@ export default function ShopDetailPage({ params }: Props) {
           ← 気分選択に戻る
         </Link>
       </div>
-    </main>
+    </div>
   );
 }
