@@ -18,11 +18,11 @@ export default function HomePage() {
   };
 
   return (
-    <div className="p-6 max-w-md mx-auto">
-      <h1 className="text-2xl mb-5">SoloMealへようこそ！</h1>
-      <p className="text-lg mb-8">気分を選んでください</p>
+    <div className="p-6 max-w-md mx-auto text-center min-h-screen text-black">
+      <h1 className="text-3xl font-bold mb-5">SoloMealへようこそ！</h1>
+      <p className="text-base text-gray-700 mb-8">気分を選んでください</p>
 
-      <div className="mt-5 flex flex-col md:flex-row justify-center items-center">
+      <div className="mt-8 flex flex-col md:flex-row justify-center items-center gap-3">
         {moods.map((label) => (
           <MoodButton
             key={label}
@@ -40,9 +40,15 @@ export default function HomePage() {
             <Link
               key={shop.name}
               href={`/shop/${encodeURIComponent(shop.name)}`}
-              className="block mx-auto my-2 w-48 md:w-60 px-4 py-2 text-base md:text-lg bg-white text-black rounded shadow text-center"
+              className="block w-full max-w-md bg-white rounded-lg shadow-md p-5 my-6 mx-auto hover:shadow-lg transition"
             >
-              {shop.name}
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-lg font-bold">
+                  {shop.emoji} {shop.name}
+                </h3>
+                <span className="text-sm text-gray-500">{shop.mood}</span>
+              </div>
+              <p className="text-sm text-gray-700">{shop.comment}</p>
             </Link>
           ))}
         </div>
