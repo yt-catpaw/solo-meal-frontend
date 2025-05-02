@@ -12,9 +12,13 @@ export default function MoodButton({
   return (
     <button
       onClick={onClick}
-      className={`m-2 w-40 md:w-60 px-4 py-3 text-base md:text-lg rounded ${
-        isSelected ? "bg-blue-500 text-white" : "bg-gray-200 text-black"
-      }`}
+      className={`m-2 px-4 py-2 text-base rounded shadow-sm transition border
+      ${
+        isSelected
+          ? "bg-blue-500 text-white border-blue-500"
+          : "bg-white text-black border-gray-300 hover:bg-gray-100"
+      }
+    `}
     >
       {label}
     </button>
