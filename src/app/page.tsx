@@ -18,11 +18,11 @@ export default function HomePage() {
   };
 
   return (
-    <div className="p-6 max-w-md mx-auto">
-      <h1 className="text-2xl mb-5">SoloMealへようこそ！</h1>
-      <p className="text-lg mb-8">気分を選んでください</p>
+    <div className="p-6 max-w-md mx-auto text-center min-h-screen text-black">
+      <h1 className="text-3xl font-bold mb-5">SoloMealへようこそ！</h1>
+      <p className="text-base text-gray-700 mb-8">気分を選んでください</p>
 
-      <div className="mt-5 flex flex-col md:flex-row justify-center items-center">
+      <div className="mt-8 flex flex-col md:flex-row justify-center items-center gap-3">
         {moods.map((label) => (
           <MoodButton
             key={label}
